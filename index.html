@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>1_計算機</title>
+        <style>
+            input{
+                width: 480px;
+                padding: 3px;
+                font-size: 30px;
+                border: 1px solid gray;
+                text-align: right;
+            }
+            button{
+                padding: 15px;
+                font-size: 30px;
+            }
+
+            #output1{
+                width: 200px;
+                padding: 3px;
+                font-size: 30px;
+                border: 1px solid grey;
+                text-align: right;
+                color: red;
+            }
+            #output2{
+                font-size: 30px;
+            }
+            coment{
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>私のオリジナル計算機</h1>
+        <p><input type="text" id="input1" placeholder="金額"></p>
+        <p><input type="text" id="input2" placeholder="予備費、クーポン値、割合、人数..."></p>
+        <p><button onclick="plus();">予備費を足す</button>
+        <button onclick="minus();">クーポン値を引く</button></p>
+        <p><button onclick="times();">税込み、割引</button>
+        <button onclick="divide();">割り勘する</button></p>
+        <p id="output1">結果</p>
+        <p id="output2">メッセージ</p>
+        <p id="coment">私のオリジナルはお会計や割り勘に特化した計算機です。<br>どの計算ボタンが押されたかをプログラムの条件分岐で判定し、<br>計算結果の下に「〇〇算を実行しました」と<br>ガイダンスを表示する工夫を施しました。</p>
+        <script>
+            const input1=document.getElementById("input1");
+            const input2=document.getElementById("input2");
+            const output1=document.getElementById("output1");
+            const output2=document.getElementById("output2");
+            function showMessage(type) {
+                if (type === "plus") {
+                    output2.innerHTML = "足し算を実行しました";
+                } else if (type === "minus") {
+                    output2.innerHTML = "引き算を実行しました";
+                } else if (type === "times") {
+                    output2.innerHTML = "掛け算を実行しました";
+                } else if (type === "divide") {
+                    output2.innerHTML = "割り算を実行しました";
+                }
+            }
+            function plus(){
+                let total1=Number(input1.value) + Number(input2.value);
+                output1.innerHTML=total1;
+                showMessage("plus");
+            }
+            function minus(){
+                let total2=Number(input1.value) - Number(input2.value);
+                output1.innerHTML=total2;
+                showMessage("minus");
+            }
+            function times(){
+                let total3=Number(input1.value) * Number(input2.value);
+                output1.innerHTML=total3;
+                showMessage("times");
+            }
+            function divide(){
+                let total4=Number(input1.value) / Number(input2.value);
+                output1.innerHTML=total4;
+                showMessage("divide");
+            }
+        </script>
+    </body>
+</html>
